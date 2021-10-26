@@ -1,0 +1,12 @@
+.container {
+  background-color: #419be0;
+  color: white;
+}
+
+.slick-slide img {
+  margin: auto;
+}
+.offers {
+  width: 90%;
+  height: 300px;
+}
