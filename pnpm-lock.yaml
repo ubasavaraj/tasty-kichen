@@ -5,6 +5,7 @@ specifiers:
   '@testing-library/react': 11.2.5
   '@testing-library/user-event': 12.6.2
   chalk: 4.1.0
+  classnames: 2.3.1
   eslint-config-airbnb: 18.2.1
   eslint-config-prettier: 8.1.0
   eslint-plugin-prettier: 3.3.1
@@ -17,6 +18,7 @@ specifiers:
   react-dom: 17.0.1
   react-icons: 4.3.1
   react-js-pagination: 3.0.3
+  react-loader-spinner: 4.0.0
   react-router-dom: 5.3.0
   react-scripts: 4.0.3
   react-slick: 0.28.1
@@ -27,11 +29,13 @@ dependencies:
   '@testing-library/react': 11.2.5_react-dom@17.0.1+react@17.0.1
   '@testing-library/user-event': 12.6.2
   chalk: 4.1.0
+  classnames: 2.3.1
   js-cookie: 3.0.1
   react: 17.0.1
   react-dom: 17.0.1_react@17.0.1
   react-icons: 4.3.1_react@17.0.1
   react-js-pagination: 3.0.3
+  react-loader-spinner: 4.0.0_react-dom@17.0.1+react@17.0.1
   react-router-dom: 5.3.0_react@17.0.1
   react-slick: 0.28.1_react-dom@17.0.1+react@17.0.1
   slick-carousel: 1.8.1
@@ -9800,6 +9804,17 @@ packages:
       prop-types: 15.7.2
       react: 16.14.0
       tar: 2.2.2
+    dev: false
+
+  /react-loader-spinner/4.0.0_react-dom@17.0.1+react@17.0.1:
+    resolution: {integrity: sha512-RU2vpEej6G4ECei0h3q6bgLU10of9Lw5O+4AwF/mtkrX5oY20Sh/AxoPJ7etbrs/7Q3u4jN5qwCwGLRKCHpk6g==}
+    peerDependencies:
+      react: '*'
+      react-dom: '*'
+    dependencies:
+      prop-types: 15.7.2
+      react: 17.0.1
+      react-dom: 17.0.1_react@17.0.1
     dev: false
 
   /react-refresh/0.8.3:

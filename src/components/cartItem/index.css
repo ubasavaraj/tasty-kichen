@@ -1,0 +1,10 @@
+.headContainer {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+.cartImage {
+  height: 150px;
+  width: 150px;
+}

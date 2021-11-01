@@ -1,0 +1,30 @@
+.restarent-list5 {
+  display: flex;
+  background-color: #333333;
+  margin: 20px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+.container1 {
+  width: 40%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.restarent-list2 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.restarent-image1 {
+  width: 400px;
+  height: 300px;
+  border-radius: 15px;
+  margin-right: 15px;
+}
+.list-container4 {
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+}

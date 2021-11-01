@@ -8,7 +8,9 @@ import Restaurents from '../Restaurents/index'
 
 import SimpleSlider from '../Slick'
 
-import './index.css'
+import Footer from '../Footer'
+
+import '../Restaurents/index.css'
 
 const Home = () => {
   const jwtToken = Cookies.get('jwt_token')
@@ -21,6 +23,7 @@ const Home = () => {
       <Header />
       <SimpleSlider />
       <Restaurents />
+      <Footer />
     </>
   )
 }

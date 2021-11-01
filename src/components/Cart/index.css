@@ -1,0 +1,29 @@
+.headContainer {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cartImage {
+  height: 150px;
+  width: 150px;
+}
+.cart-summary-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.button1 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.order-total-value {
+  color: #171f46;
+  font-family: 'Roboto';
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+.amount {
+  align-self: flex-end;
+}

@@ -6,6 +6,8 @@ import {BsFilterRight} from 'react-icons/bs'
 
 import {IoIosArrowForward, IoIosArrowBack} from 'react-icons/io'
 
+import Loader from 'react-loader-spinner'
+
 import ListItem from '../ListItem'
 
 import './index.css'
@@ -23,11 +25,18 @@ const sortByOptions = [
   },
 ]
 
+const apiStatusConstants = {
+  initial: 'INITIAL',
+  success: 'SUCCESS',
+  inProgress: 'IN_PROGRESS',
+}
+
 class Restaurents extends Component {
   state = {
     productsList: [],
     activeOptionId: sortByOptions[1].value,
     activePage: 1,
+    apiStatus: apiStatusConstants.initial,
   }
 
   componentDidMount() {
@@ -35,6 +44,9 @@ class Restaurents extends Component {
   }
 
   getProducts = async () => {
+    this.setState({
+      apiStatus: apiStatusConstants.inProgress,
+    })
     const jwtToken = Cookies.get('jwt_token')
     const {activeOptionId, activePage} = this.state
     const offset = (activePage - 1) * 9
@@ -71,9 +83,16 @@ class Restaurents extends Component {
       console.log(updatedData)
       this.setState({
         productsList: updatedData,
+        apiStatus: apiStatusConstants.success,
       })
     }
   }
+
+  renderLoadingView = () => (
+    <div testId="restaurants-list-loader">
+      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+    </div>
+  )
 
   handlePageChange = pageNumber => {
     console.log(`active page is ${pageNumber}`)
@@ -102,7 +121,7 @@ class Restaurents extends Component {
     this.setState({activeOptionId: event.target.value}, this.getProducts)
   }
 
-  render() {
+  renderListView = () => {
     const {activeOptionId, productsList, activePage} = this.state
 
     return (
@@ -130,7 +149,7 @@ class Restaurents extends Component {
           </div>
         </div>
 
-        <ul className="list-container">
+        <ul className="list-container23">
           {productsList.map(product => (
             <ListItem productList={product} key={product.id} />
           ))}
@@ -138,24 +157,37 @@ class Restaurents extends Component {
         <div className="pagination">
           <button
             type="button"
-            testid="pagination-left-button"
-            onClick={this.nextPage}
-          >
-            <IoIosArrowForward />
-          </button>
-          <p>
-            <span testid="active-page-number">{activePage}</span> of 4
-          </p>
-          <button
-            type="button"
-            testid="pagination-right-button"
+            testId="pagination-right-button"
             onClick={this.prevpage}
           >
             <IoIosArrowBack />
           </button>
+          <p>
+            <span testId="active-page-number">{activePage}</span> of 4
+          </p>
+
+          <button
+            type="button"
+            testId="pagination-left-button"
+            onClick={this.nextPage}
+          >
+            <IoIosArrowForward />
+          </button>
         </div>
       </>
     )
+  }
+
+  render() {
+    const {apiStatus} = this.state
+    switch (apiStatus) {
+      case apiStatusConstants.success:
+        return this.renderListView()
+      case apiStatusConstants.inProgress:
+        return this.renderLoadingView()
+      default:
+        return null
+    }
   }
 }
 

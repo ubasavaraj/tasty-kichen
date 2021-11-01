@@ -1,6 +1,7 @@
-import {BsStar} from 'react-icons/bs'
+import {BsStarFill} from 'react-icons/bs'
+import {Link} from 'react-router-dom'
 
-import '../Restaurents/index.css'
+import './index.css'
 
 const ListItem = props => {
   const {productList} = props
@@ -11,22 +12,26 @@ const ListItem = props => {
     rating,
     ratingColor,
     totalReviews,
+    id,
   } = productList
+
   return (
-    <li testid="restaurant-item" className="restarent-list">
-      <div>
-        <img src={imageUrl} className="restarent-image" alt="restaurant" />
-      </div>
-      <div className="second-side">
-        <h1 className="head1">{name}</h1>
-        <p className="para">{cuisine}</p>
-        <div className="rating">
-          <BsStar style={{backgroundColor: `${ratingColor}`}} />
-          <p>{rating}</p>
-          <p>({totalReviews})</p>
+    <Link to={`/restaurant/${id}`} className="restarent-list">
+      <li testid="restaurant-item" className="restarent-list1">
+        <div>
+          <img src={imageUrl} className="restarent-image" alt="restaurant" />
         </div>
-      </div>
-    </li>
+        <div className="second-side">
+          <h1 className="head1">{name}</h1>
+          <p className="para">{cuisine}</p>
+          <div className="rating">
+            <BsStarFill style={{color: `${ratingColor}`}} />
+            <p>{rating}</p>
+            <p>({totalReviews})</p>
+          </div>
+        </div>
+      </li>
+    </Link>
   )
 }
 

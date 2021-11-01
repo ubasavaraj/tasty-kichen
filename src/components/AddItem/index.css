@@ -5,17 +5,13 @@
   margin-right: 15px;
 }
 .restarent-list {
-  color: black;
-  font-family: roboto;
+  width: fit-content;
   width: 30%;
-  text-decoration: none;
-  margin-bottom: 48px;
-  flex-grow: 0;
-  flex-shrink: 1;
-  margin-right: 20px;
 }
-.restarent-list1 {
+.restarent-list0264 {
+  width: 40%;
   display: flex;
+  background-color: white;
 }
 .list-container {
   list-style: none;
@@ -23,9 +19,9 @@
   flex-direction: row;
   flex-wrap: 3;
 }
-.second-side {
-  height: 60%;
-  width: auto;
+.second-side1 {
+  height: 50%;
+  width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,9 +33,9 @@
   width: 150px;
   height: 150px;
 }
-.head1 {
+.head3 {
   font-size: 20px;
-  width: 80%;
+  width: 50%;
 }
 .para {
   font-size: 12px;

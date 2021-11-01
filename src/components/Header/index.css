@@ -8,6 +8,20 @@
   width: auto;
 }
 
+.mark {
+  border-style: none;
+  color: #f7931e;
+  background-color: #ffffff;
+}
+.buttons {
+  border-style: none;
+  background-color: #ffffff;
+}
+
+.click {
+  color: #f7931e;
+}
+
 @media screen and (max-width: 768px) {
   .nav-header {
     flex-direction: column;
