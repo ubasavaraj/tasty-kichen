@@ -33,7 +33,7 @@ const sortByOptions = [
 class App extends Component {
   state = {
     activeHome: false,
-    activeCart: false,
+    activeCart: true,
   }
 
   onClickHome = () => {

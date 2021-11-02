@@ -4,8 +4,15 @@ import {IoIosAdd} from 'react-icons/io'
 import './index.css'
 
 const CartItem = props => {
-  const {cartItem} = props
-  const {imageUrl, name, foodItemsCost, quantity} = cartItem
+  const {cartItem, onMinus, onAdd} = props
+  const {imageUrl, name, cost, quantity, id} = cartItem
+  console.log(imageUrl)
+  const onClickMinus = () => {
+    onMinus(id)
+  }
+  const onClickAdd = () => {
+    onAdd(id)
+  }
 
   return (
     <li className="headContainer">
@@ -15,18 +22,26 @@ const CartItem = props => {
       </div>
       <div>
         <div className="pagination">
-          <button type="button" testId="pagination-right-button">
+          <button
+            type="button"
+            testId="pagination-right-button"
+            onClick={onClickMinus}
+          >
             <BiMinus />
           </button>
-          <p testId="active-page-number">{quantity}</p>
+          <p testId="active-page-number">{quantity + 1}</p>
 
-          <button type="button" testId="pagination-left-button">
+          <button
+            type="button"
+            testId="pagination-left-button"
+            onClick={onClickAdd}
+          >
             <IoIosAdd />
           </button>
         </div>
       </div>
       <div>
-        <p>₹{quantity * foodItemsCost}</p>
+        <p>₹{quantity * cost}</p>
       </div>
     </li>
   )

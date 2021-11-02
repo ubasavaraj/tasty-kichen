@@ -34,7 +34,7 @@ class RestarentDetails extends Component {
     imageUrl: product.image_url,
     name: product.name,
     rating: product.rating,
-    foodItemsCost: product.cost,
+    cost: product.cost,
     foodItemsFoodType: product.food_type,
     quantity: 0,
   })
@@ -269,7 +269,8 @@ class RestarentDetails extends Component {
 
   render() {
     const {foodItem, quantity, cartList} = this.state
-    localStorage.setItem('my_cart', JSON.stringify(cartList))
+    localStorage.setItem('cartData', JSON.stringify(cartList))
+
     return (
       <>
         <Header />
