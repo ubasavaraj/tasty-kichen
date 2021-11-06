@@ -70,7 +70,7 @@ const Header = props => (
                       onClick={onClickCartButton}
                       className={activeCart ? 'mark' : 'buttons'}
                     >
-                      cart
+                      Cart
                     </button>
                   </Link>
                 </li>

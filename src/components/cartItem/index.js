@@ -6,16 +6,17 @@ import './index.css'
 const CartItem = props => {
   const {cartItem, onMinus, onAdd} = props
   const {imageUrl, name, cost, quantity, id} = cartItem
-  console.log(imageUrl)
+
   const onClickMinus = () => {
     onMinus(id)
   }
+
   const onClickAdd = () => {
     onAdd(id)
   }
 
   return (
-    <li className="headContainer">
+    <li testid="cartItem" className="headContainer">
       <div>
         <img src={imageUrl} alt="cart" className="cartImage" />
         <h1>{name}</h1>
@@ -24,16 +25,16 @@ const CartItem = props => {
         <div className="pagination">
           <button
             type="button"
-            testId="pagination-right-button"
+            testid="decrement-quantity"
             onClick={onClickMinus}
           >
             <BiMinus />
           </button>
-          <p testId="active-page-number">{quantity + 1}</p>
+          <p testid="item-quantity">{quantity}</p>
 
           <button
             type="button"
-            testId="pagination-left-button"
+            testid="increment-quantity"
             onClick={onClickAdd}
           >
             <IoIosAdd />

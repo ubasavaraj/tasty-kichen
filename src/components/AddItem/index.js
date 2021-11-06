@@ -7,7 +7,7 @@ import './index.css'
 const AddItem = props => {
   const {productList, onMinus, onAdd, addButton, cartList} = props
   console.log(cartList)
-  const {imageUrl, name, rating, foodItemsCost, id, quantity} = productList
+  const {imageUrl, name, rating, cost, id, quantity} = productList
 
   const onClickMinus = () => {
     onMinus(id)
@@ -27,7 +27,7 @@ const AddItem = props => {
       </div>
       <div className="second-side1">
         <h1 className="head3">{name}</h1>
-        <p className="para">{foodItemsCost}</p>
+        <p className="para">{cost}</p>
         <div className="rating">
           <BsStarFill />
           <p>{rating}</p>
@@ -40,18 +40,14 @@ const AddItem = props => {
           <div className="pagination">
             <button
               type="button"
-              data-testid="decrement-count"
+              testid="decrement-count"
               onClick={onClickMinus}
             >
               <BiMinus />
             </button>
-            <p testId="active-count">{quantity}</p>
+            <p testid="active-count">{quantity}</p>
 
-            <button
-              type="button"
-              data-testid="increment-count"
-              onClick={onClickAdd}
-            >
+            <button type="button" testid="increment-count" onClick={onClickAdd}>
               <IoIosAdd />
             </button>
           </div>

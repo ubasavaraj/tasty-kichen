@@ -138,11 +138,11 @@ class RestarentDetails extends Component {
   }
 
   removeCartItem = id => {
-    const {foodItem} = this.state
-    const updatedCartList = foodItem.filter(
+    const {cartList} = this.state
+    const updatedCartList = cartList.filter(
       eachCartItem => eachCartItem.id !== id,
     )
-    this.setState({foodItem: updatedCartList})
+    this.setState({cartList: updatedCartList})
   }
 
   addCartItem = product => {
@@ -189,7 +189,7 @@ class RestarentDetails extends Component {
       className="products-details-loader-container"
       testid="restaurant-details-loader"
     >
-      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+      <Loader type="Circles" color="#0b69ff" height="50" width="50" />
     </div>
   )
 
@@ -218,7 +218,6 @@ class RestarentDetails extends Component {
       name,
       rating,
       reviewsCount,
-
       costForTwo,
     } = productData
 
@@ -270,6 +269,7 @@ class RestarentDetails extends Component {
   render() {
     const {foodItem, quantity, cartList} = this.state
     localStorage.setItem('cartData', JSON.stringify(cartList))
+    console.log(foodItem)
 
     return (
       <>

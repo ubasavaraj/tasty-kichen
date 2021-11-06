@@ -4,12 +4,12 @@ import {Component} from 'react'
 import Header from '../Header'
 
 import CartItem from '../cartItem'
+
 import EmptyCart from '../emptyCart'
 
 import './index.css'
 
 const cartList1 = JSON.parse(localStorage.getItem('cartData'))
-const header = JSON.parse(localStorage.getItem('my_cart_header'))
 
 class Cart extends Component {
   state = {
@@ -74,9 +74,9 @@ class Cart extends Component {
           <div>
             <div>
               <ul className="headContainer">
-                {header.map(product => (
-                  <li>{product}</li>
-                ))}
+                <li>Items</li>
+                <li>Quantity</li>
+                <li>Price</li>
               </ul>
             </div>
             <ul>

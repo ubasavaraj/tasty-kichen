@@ -20,16 +20,16 @@ export default function Footer() {
         The only thing we are serious about is food. Contact us on
       </p>
       <div className="container2">
-        <div className="icon-container">
+        <div testid="pintrest-social-icon" className="icon-container">
           <FaPinterestSquare className="icon-container" />
         </div>
-        <div className="icon-container">
+        <div testid="instagram-social-icon" className="icon-container">
           <FaInstagram className="icon-container" />
         </div>
-        <div className="icon-container">
+        <div testid="twitter-social-icon" className="icon-container">
           <FaTwitter className="icon-container" />
         </div>
-        <div className="icon-container">
+        <div testid="facebook-social-icon" className="icon-container">
           <FaFacebookSquare className="icon-container" />
         </div>
       </div>
