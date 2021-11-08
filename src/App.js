@@ -31,6 +31,19 @@ class App extends Component {
   state = {
     activeHome: false,
     activeCart: false,
+    cartList: [],
+  }
+
+  componentDidMount() {
+    this.getData()
+  }
+
+  getData = () => {
+    let localData = localStorage.getItem('cartData')
+    localData = JSON.parse(localData)
+    const list = localData
+    console.log(list)
+    this.setState({cartList: list})
   }
 
   onClickHome = () => {
@@ -51,8 +64,53 @@ class App extends Component {
     })
   }
 
+  onAdd = id => {
+    this.getData()
+    this.setState(prevState => ({
+      cartList: prevState.cartList.map(eachCartItem => {
+        if (id === eachCartItem.id) {
+          const updatedQuantity = eachCartItem.quantity + 1
+          return {...eachCartItem, quantity: updatedQuantity}
+        }
+        return eachCartItem
+      }),
+    }))
+    const {cartList} = this.state
+    localStorage.setItem('cartData', JSON.stringify(cartList))
+  }
+
+  onMinus = id => {
+    this.getData()
+    const {cartList} = this.state
+    const productObject = cartList.find(eachCartItem => eachCartItem.id === id)
+    if (productObject.quantity > 1) {
+      this.setState(prevState => ({
+        cartList: prevState.cartList.map(eachCartItem => {
+          if (id === eachCartItem.id) {
+            const updatedQuantity = eachCartItem.quantity - 1
+            return {...eachCartItem, quantity: updatedQuantity}
+          }
+          return eachCartItem
+        }),
+      }))
+      localStorage.setItem('cartData', JSON.stringify(cartList))
+    } else {
+      this.removeCartItem(id)
+    }
+  }
+
+  removeCartItem = id => {
+    const {cartList} = this.state
+    const updatedCartList = cartList.filter(
+      eachCartItem => eachCartItem.id !== id,
+    )
+    this.setState({cartList: updatedCartList})
+    localStorage.setItem('cartData', JSON.stringify(updatedCartList))
+  }
+
   render() {
     const {activeCart, activeHome} = this.state
+
     return (
       <HeaderContext.Provider
         value={{
@@ -60,6 +118,8 @@ class App extends Component {
           activeHome,
           onClickHome: this.onClickHome,
           onClickCart: this.onClickCart,
+          onAdd: this.onAdd,
+          onMinus: this.onMinus,
         }}
       >
         <Switch>

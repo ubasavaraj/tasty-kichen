@@ -3,7 +3,7 @@ import {IoIosAdd} from 'react-icons/io'
 
 import './index.css'
 
-const Counter = props => {
+const Counter1 = props => {
   const {quantity, id, onAdd, onMinus} = props
   const onClickMinus = () => {
     onMinus(id)
@@ -25,4 +25,4 @@ const Counter = props => {
   )
 }
 
-export default Counter
+export default Counter1

@@ -1,21 +1,11 @@
 import {BsStarFill} from 'react-icons/bs'
-import {BiMinus} from 'react-icons/bi'
-import {IoIosAdd} from 'react-icons/io'
-import Counter from '../Counter'
+import Counter1 from '../Counter1'
 
 import './index.css'
 
 const AddItem = props => {
-  const {productList, onMinus, onAdd, addButton, cartList} = props
-  console.log(cartList)
+  const {productList, onMinus, onAdd, addButton} = props
   const {imageUrl, name, rating, cost, id, quantity} = productList
-
-  const onClickMinus = () => {
-    onMinus(id)
-  }
-  const onClickAdd = () => {
-    onAdd(id)
-  }
 
   const onClickBtn = () => {
     addButton({...productList, quantity})
@@ -38,7 +28,7 @@ const AddItem = props => {
             Add
           </button>
         ) : (
-          <Counter
+          <Counter1
             quantity={quantity}
             onAdd={onAdd}
             onMinus={onMinus}

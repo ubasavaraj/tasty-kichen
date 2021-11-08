@@ -5,7 +5,8 @@ const HeaderContext = React.createContext({
   activeCArt: false,
   onClickHome: () => {},
   onClickCart: () => {},
-  onAddBtn24: () => {},
+  onAdd: () => {},
+  onMinus: () => {},
 })
 
 export default HeaderContext

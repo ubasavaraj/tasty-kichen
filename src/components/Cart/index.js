@@ -7,7 +7,7 @@ import CartItems from '../cartItem'
 import './index.css'
 
 class Cart extends Component {
-  state = {order: true, status: 'progress'}
+  state = {order: true, status: 'progress', cartList1: []}
 
   componentDidMount() {
     this.getData()
@@ -55,7 +55,49 @@ class Cart extends Component {
   )
 
   getData = () => {
+    let localData = localStorage.getItem('cartData')
+    localData = JSON.parse(localData)
+    const list = localData
+    this.setState({cartList1: list})
     this.setState({status: 'success'})
+  }
+
+  onAdd = id => {
+    this.setState(prevState => ({
+      cartList1: prevState.cartList1.map(eachCartItem => {
+        if (id === eachCartItem.id) {
+          const updatedQuantity = eachCartItem.quantity + 1
+          return {...eachCartItem, quantity: updatedQuantity}
+        }
+        return eachCartItem
+      }),
+    }))
+  }
+
+  onMinus = id => {
+    const {cartList1} = this.state
+    const productObject = cartList1.find(eachCartItem => eachCartItem.id === id)
+    if (productObject.quantity > 1) {
+      this.setState(prevState => ({
+        cartList1: prevState.cartList1.map(eachCartItem => {
+          if (id === eachCartItem.id) {
+            const updatedQuantity = eachCartItem.quantity - 1
+            return {...eachCartItem, quantity: updatedQuantity}
+          }
+          return eachCartItem
+        }),
+      }))
+    } else {
+      this.removeCartItem(id)
+    }
+  }
+
+  removeCartItem = id => {
+    const {cartList1} = this.state
+    const updatedCartList = cartList1.filter(
+      eachCartItem => eachCartItem.id !== id,
+    )
+    this.setState({cartList1: updatedCartList})
   }
 
   getEmpty = () => (
@@ -78,12 +120,9 @@ class Cart extends Component {
   )
 
   getCartList = () => {
-    const {order} = this.state
-    let localData = localStorage.getItem('cartData')
-    localData = JSON.parse(localData)
-    const list = localData
+    const {order, cartList1} = this.state
 
-    if (list !== null && list.length !== 0) {
+    if (cartList1 !== null && cartList1.length !== 0) {
       return (
         <div className="cart-page">
           {order ? (
@@ -95,7 +134,7 @@ class Cart extends Component {
                   <p className="price-name">price</p>
                 </div>
                 <ul className="items-unorder-list">
-                  {list.map(each => (
+                  {cartList1.map(each => (
                     <CartItems
                       items={each}
                       key={each.id}
@@ -109,7 +148,7 @@ class Cart extends Component {
                   <h1 className="order-name">Order Total:</h1>
                   <div className="place-order-cont">
                     <p className="final-amount" testid="total-price">
-                      ₹ {this.totalAmount(list)}
+                      ₹ {this.totalAmount(cartList1)}
                     </p>
                     <button
                       type="button"
@@ -129,6 +168,8 @@ class Cart extends Component {
         </div>
       )
     }
+
+    localStorage.clear()
     return <div>{this.getEmpty()}</div>
   }
 
