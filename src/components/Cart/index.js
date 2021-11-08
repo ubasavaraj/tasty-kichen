@@ -2,22 +2,10 @@ import {Link} from 'react-router-dom'
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
-<<<<<<< HEAD
 import Footer from '../Footer'
 import CartItems from '../cartItem'
 import './index.css'
 
-=======
-
-import CartItem from '../cartItem'
-
-import EmptyCart from '../emptyCart'
-
-import './index.css'
-
-const cartList1 = JSON.parse(localStorage.getItem('cartData'))
-
->>>>>>> 66941f77968daa1b73b993da239db1d0c33f7856
 class Cart extends Component {
   state = {order: true, status: 'progress'}
 
@@ -100,7 +88,6 @@ class Cart extends Component {
         <div className="cart-page">
           {order ? (
             <div>
-<<<<<<< HEAD
               <div className="show-cart-container">
                 <div className="cart-container">
                   <p className="item-cart-title">Item</p>
@@ -133,31 +120,6 @@ class Cart extends Component {
                     </button>
                   </div>
                 </div>
-=======
-              <ul className="headContainer">
-                <li>Items</li>
-                <li>Quantity</li>
-                <li>Price</li>
-              </ul>
-            </div>
-            <ul>
-              {cartList.map(product => (
-                <CartItem
-                  key={product.id}
-                  cartItem={product}
-                  onMinus={this.onMinus}
-                  onAdd={this.onAdd}
-                />
-              ))}
-            </ul>
-            <div className="cart-summary-container">
-              <h1>Order Total</h1>
-              <h1 className="amount">Rs {total}/-</h1>
-            </div>
-            <Link to="/cart/success">
-              <div className="button1">
-                <button type="button">Place Order</button>
->>>>>>> 66941f77968daa1b73b993da239db1d0c33f7856
               </div>
               <Footer />
             </div>

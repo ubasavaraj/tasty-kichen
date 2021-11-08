@@ -38,29 +38,12 @@ const AddItem = props => {
             Add
           </button>
         ) : (
-<<<<<<< HEAD
           <Counter
             quantity={quantity}
             onAdd={onAdd}
             onMinus={onMinus}
             id={id}
           />
-=======
-          <div className="pagination">
-            <button
-              type="button"
-              testid="decrement-count"
-              onClick={onClickMinus}
-            >
-              <BiMinus />
-            </button>
-            <p testid="active-count">{quantity}</p>
-
-            <button type="button" testid="increment-count" onClick={onClickAdd}>
-              <IoIosAdd />
-            </button>
-          </div>
->>>>>>> 66941f77968daa1b73b993da239db1d0c33f7856
         )}
       </div>
     </li>
