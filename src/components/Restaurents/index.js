@@ -157,18 +157,18 @@ class Restaurents extends Component {
         <div className="pagination">
           <button
             type="button"
-            testId="pagination-right-button"
+            testid="pagination-left-button"
             onClick={this.prevpage}
           >
             <IoIosArrowBack />
           </button>
           <p>
-            <span testId="active-page-number">{activePage}</span> of 4
+            <span testid="active-page-number">{activePage}</span> of 4
           </p>
 
           <button
             type="button"
-            testId="pagination-left-button"
+            testid="pagination-right-button"
             onClick={this.nextPage}
           >
             <IoIosArrowForward />

@@ -13,9 +13,6 @@ import Success from './components/success'
 
 import './App.css'
 
-const cartHeader = ['Items', 'Quantity', 'Price']
-
-localStorage.setItem('my_cart_header', JSON.stringify(cartHeader))
 // eslint-disable-next-line
 const sortByOptions = [
   {
@@ -33,7 +30,7 @@ const sortByOptions = [
 class App extends Component {
   state = {
     activeHome: false,
-    activeCart: true,
+    activeCart: false,
   }
 
   onClickHome = () => {
